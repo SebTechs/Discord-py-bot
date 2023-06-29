@@ -13,6 +13,7 @@ import time
 from discord.ext import commands 
 
 intents = discord.Intents.all()
+intents.message_content = True
 client = commands.Bot(command_prefix=",", intents= intents)
 @client.event
 async def on_ready():
@@ -24,5 +25,19 @@ client.remove_command("help")
 async def help(ctx):
     await ctx.send("HELP IS NOT FOR YOU")
 
+async def main():
+    await client.start('MTEyMzkyOTk5NjAwNDY4Nzk4Mw.GPNVut.o6S12WXCc0bInFQhM_Fn9ZMGBCVKDPhIsh7F4Y')
 
-client.run('MTEyMzkyOTk5NjAwNDY4Nzk4Mw.GPNVut.o6S12WXCc0bInFQhM_Fn9ZMGBCVKDPhIsh7F4Y')
+@client.event
+async def on_message(self, message):
+    print(f"message from {message.author}: {message.content}")
+
+@client.event
+async def on_ready(self):
+    print("Bot is online")
+    
+@commands.command()
+async def ping(self, ctx):
+    await ctx.send("Pong")
+
+asyncio.run(main())
