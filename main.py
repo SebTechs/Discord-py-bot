@@ -25,5 +25,26 @@ client.remove_command("help")
 async def help(ctx):
     await ctx.send("HELP IS NOT FOR YOU")
 
+#Error Handler
 
-client.run('Enter Discord token here.')
+@client.event
+async def on_command_error(ctx, erorr):
+    if isinstance(erorr, CommandNotFound):
+        await ctx.send("Oh you naughty thing, this command doesnt exist")
+        return
+    raise erorr
+
+
+#Fun commands
+
+#PP commands (length)
+@client.command(name = "pp")
+async def pp(ctx):
+    length = random.randint(1,300)
+    embed = discord.Embed(colour=0xff00ff)
+    embed.add_field(name = "You have a...", value=f"{length}inch penis", inline=False)
+    embed.set_footer(text= f"Requested by: {ctx.message.author}")
+    await ctx.reply(embed = embed)
+
+
+client.run('MTEyMzk3MTE3MTg4NTUxNDgzMw.G41zuj.A6mDZZ_s2GeVVhSostbFZ3q2up3Slu-KkTeHMo')
