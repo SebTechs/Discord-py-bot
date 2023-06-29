@@ -16,7 +16,7 @@ intents = discord.Intents.all()
 client = commands.Bot(command_prefix=",", intents= intents)
 @client.event
 async def on_ready():
-    print("Hellow world I am alive now and working maybe")
+    print("Hellow world I am alive now and working maybe Change innit")
     await client.change_presence(activity=discord.Game(name="idk by im doing someting"))
 
 client.remove_command("help")
