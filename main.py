@@ -19,6 +19,7 @@ async def on_ready():
     print("Hellow world I am alive now and working maybe")
     await client.change_presence(activity=discord.Game(name="idk by im doing someting"))
 
+client.remove_command("help")
 
 @client.command(name = "help")
 async def help(ctx):
