@@ -26,7 +26,11 @@ async def load():
         if filename.endswith('.py'):
             await client.load_extension(f'cogs.{filename[:-3]}')
 
+@client.command(name = "ppP")
+async def ppP(CTZ):
+    print("PP")
+
 async def main():
     await load()
-    await client.start('Enter Discord token here.')
+    await client.start('MTEyMzk3MTE3MTg4NTUxNDgzMw.G_1-8H.QAoZrdww1GNDMZVEbxYoimbcXDc8MC9yy2QSHg')
 asyncio.run(main())
