@@ -15,29 +15,23 @@ from discord.ext import commands
 intents = discord.Intents.all()
 intents.message_content = True
 client = commands.Bot(command_prefix=",", intents= intents)
+
 @client.event
-async def on_ready():
+async def on_ready(): #This is on startup
     print("Hellow world I am alive now and working maybe Change innit")
     await client.change_presence(activity=discord.Game(name="idk by im doing someting"))
 
 client.remove_command("help")
-@client.command(name = "help")
-async def help(ctx):
+@client.command(name = "help") 
+async def help(ctx): #This is on ",help" command
     await ctx.send("HELP IS NOT FOR YOU")
 
-async def main():
-    await client.start('MTEyMzkyOTk5NjAwNDY4Nzk4Mw.GPNVut.o6S12WXCc0bInFQhM_Fn9ZMGBCVKDPhIsh7F4Y')
-
 @client.event
-async def on_message(self, message):
+async def on_message(message): #This is on message
     print(f"message from {message.author}: {message.content}")
-
-@client.event
-async def on_ready(self):
-    print("Bot is online")
     
 @commands.command()
-async def ping(self, ctx):
+async def ping(self, ctx): #This is on ",ping" command
     await ctx.send("Pong")
 
-asyncio.run(main())
+client.run('Token Here please')
