@@ -41,16 +41,17 @@ async def on_message(message): #This is on message
     if(isInList == False):
        userIDs.append(message.author.id)
        print(message.author.id)
+    await client.process_commands(message)
 
     
-@commands.command()
-async def ping(self, ctx): #This is on ",ping" command
+@client.command()
+async def ping(ctx): #This is on ",ping" command
     await ctx.send("Pong")
 
-@commands.command(name = "list")
-async def list(self, ctx):
+@client.command(name = "list")
+async def list(ctx):
     for ids in userIDs:
         await ctx.send(ids)
         print("AAAA")
 
-client.run('Token')
+client.run('MTEyMzk3MTE3MTg4NTUxNDgzMw.GuB5R3.WffgrGuSy8PY0fuFNoeMaUaqy52lE4g-CxiKao')
