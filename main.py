@@ -12,6 +12,11 @@ from discord.ext.commands import CommandNotFound, Bot, errors, guild_only
 import time
 from discord.ext import commands 
 
+#Configurations
+
+color = 0xff00ff
+
+
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix=",", intents= intents)
 @client.event
@@ -39,12 +44,22 @@ async def on_command_error(ctx, erorr):
 
 #PP commands (length)
 @client.command(name = "pp")
-async def pp(ctx):
-    length = random.randint(1,300)
-    embed = discord.Embed(colour=0xff00ff)
-    embed.add_field(name = "You have a...", value=f"{length}inch penis", inline=False)
+async def pp(ctx, user: discord.User = None):
+    length = random.randint(1,12)
+    embed = discord.Embed(colour=color)
     embed.set_footer(text= f"Requested by: {ctx.message.author}")
+    if user == None:
+        user = ctx.message.author
+    else:
+        user = user.name
+    embed.add_field(name = f"{user} has a...", value=f"{length}inch penis", inline=False)
     await ctx.reply(embed = embed)
 
 
-client.run('MTEyMzk3MTE3MTg4NTUxNDgzMw.G41zuj.A6mDZZ_s2GeVVhSostbFZ3q2up3Slu-KkTeHMo')
+@client.command(name = "test")
+async def test(ctx):
+    message = await ctx.send("I have a 10 inch dick... ")
+    await asyncio.sleep(2)
+    await message.edit(content = "I have a 10 inch dick... when it's soft")
+
+client.run('MTEyMzk3MTE3MTg4NTUxNDgzMw.Gw6KkC.AYUkaiEhwlXqDoSesCFriyk7456ylRiIGGMzMs')
