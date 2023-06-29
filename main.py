@@ -19,10 +19,10 @@ async def on_ready():
     print("Hellow world I am alive now and working maybe Change innit")
     await client.change_presence(activity=discord.Game(name="idk by im doing someting"))
 
-
+client.remove_command("help")
 @client.command(name = "help")
 async def help(ctx):
     await ctx.send("HELP IS NOT FOR YOU")
 
 
-client.run('Enter Discord token here.')
+client.run('MTEyMzkyOTk5NjAwNDY4Nzk4Mw.GPNVut.o6S12WXCc0bInFQhM_Fn9ZMGBCVKDPhIsh7F4Y')
