@@ -17,7 +17,6 @@ intents.message_content = True
 client = commands.Bot(command_prefix=",", intents= intents)
 
 userIDs = list()
-userNames = list()
 userXP = list()
 
 @client.event
@@ -46,13 +45,10 @@ async def on_message(message): #This is on message
     if(isInList == False):
        userIDs.append(message.author.id)
        userXP.append(0)
-       userNames.append("")
        i = len(userIDs) - 1
 
     for letter in message.content:
         userXP[i] += 1
-
-    userNames[i] = message.author
 
     await client.process_commands(message)
 
@@ -64,8 +60,12 @@ async def ping(ctx): #This is on ",ping" command
 @client.command(name = "list")
 async def list(ctx):
     index = 0
+    leaderBoard = ""
+
     for ids in userIDs:
-        await ctx.send(f"{userNames[index]}'s XP Points: {userXP[index]}")
+        leaderBoard += f"{client.get_user(userIDs[index])}'s XP Points: {userXP[index]}\n"
         index += 1
+
+    await ctx.send(leaderBoard)
 
 client.run('Token')
