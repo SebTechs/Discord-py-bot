@@ -20,13 +20,9 @@ async def on_ready():
     await client.change_presence(activity=discord.Game(name="idk by im doing someting"))
 
 
-#This loads all of the py file (cogs) in ./cogs
-async def load():
-    for filename in os.listdir('./cogs'):
-        if filename.endswith('.py'):
-            await client.load_extension(f'cogs.{filename[:-3]}')
+@client.command(name = "help")
+async def help(ctx):
+    await ctx.send("HELP IS NOT FOR YOU")
 
-async def main():
-    await load()
-    await client.start('Enter Discord token here.')
-asyncio.run(main())
+
+client.run('Enter Discord token here.')
