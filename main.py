@@ -83,9 +83,6 @@ async def list(ctx):
 
     await ctx.send(leaderBoard)
 
-@client.command(name = "help")
-async def help(ctx):
-    await ctx.send("HELP IS NOT FOR YOU")
 
 #Fun commands
 
